@@ -64,7 +64,7 @@ public class Game {
             this.playerPlay();
             System.out.println("_____Player Turn______");
             this.game.printBoard();
-            if(this.game.finish()) {
+            if(this.game.finish(computerBlobs,playerBlobs)) {
                 break;
             }
 
@@ -72,7 +72,7 @@ public class Game {
             this.computerPlay();
             System.out.println("_____Computer Turn______");
             this.game.printBoard();
-            if (this.game.finish()) {
+            if (this.game.finish(computerBlobs,playerBlobs)) {
                 break;
             }
         }
