@@ -15,25 +15,25 @@ public class Game {
     // The Player Function
     private void playerPlay() {
 
-        Cell move = new Cell();
-        // Check The Player Row Location
-        while (true) {
-            System.out.print("Enter row: ");
-            move.row = s.nextInt();
-            System.out.println();
-            if ((move.row > 0) && (move.row <= this.game.board.length)) {
-                break;
-            }
-        }
-        // Check The Player Column Location
-        while (true) {
-            System.out.print("Enter column: ");
-            move.col = s.nextInt();
-            System.out.println();
-            if ((move.col > 0) && (move.col <=  this.game.board[0].length)) {
-                break;
-            }
-        }
+//        Move move = new Move();
+//        // Check The Player Row Location
+//        while (true) {
+//            System.out.print("Enter row: ");
+//            move.row = s.nextInt();
+//            System.out.println();
+//            if ((move.row > 0) && (move.row <= this.game.board.length)) {
+//                break;
+//            }
+//        }
+//        // Check The Player Column Location
+//        while (true) {
+//            System.out.print("Enter column: ");
+//            move.col = s.nextInt();
+//            System.out.println();
+//            if ((move.col > 0) && (move.col <=  this.game.board[0].length)) {
+//                break;
+//            }
+//        }
 
 
         //TODO: WRITE CODE THAT CHECKS IF THE SELECTED BLOB IS A PLAYER'S BLOB
