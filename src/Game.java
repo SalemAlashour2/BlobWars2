@@ -9,8 +9,8 @@ public class Game {
     /**
      * THESE TWO LISTS DESCRIBE THE BLOBS IN THE BOARD EACH HAS A POSITION
      */
-   static   ArrayList<Blob> playerBlobs;
-   static   ArrayList<Blob> computerBlobs;
+   static   ArrayList<Blob> playerBlobs = new ArrayList<>();
+   static   ArrayList<Blob> computerBlobs = new ArrayList<>();
 
     // The Player Function
     private void playerPlay() {
@@ -56,6 +56,7 @@ public class Game {
         }
     }
 
+
     private double getDistance(Cell one, Cell two) {
         int ii = Math.abs(one.i - two.i);
         int jj = Math.abs(one.j - two.j);
@@ -96,7 +97,7 @@ public class Game {
             this.playerPlay();
             System.out.println("_____Player Turn______");
             this.game.printBoard();
-            if(this.game.finish()) {
+            if(this.game.finish(computerBlobs,playerBlobs)) {
                 break;
             }
 
@@ -104,7 +105,7 @@ public class Game {
             this.computerPlay();
             System.out.println("_____Computer Turn______");
             this.game.printBoard();
-            if (this.game.finish()) {
+            if (this.game.finish(computerBlobs,playerBlobs)) {
                 break;
             }
         }

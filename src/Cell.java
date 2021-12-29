@@ -3,10 +3,11 @@ public class Cell {
     int i;
     int j;
 
-    public Cell()
-    {
-        this.i = 0;
-        this.j = 0;
-    }
+    Cell(){
 
+    }
+    public Cell(int i, int j) {
+        this.i = i;
+        this.j = j;
+    }
 }
