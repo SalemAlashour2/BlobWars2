@@ -28,20 +28,26 @@ public class Board {
         Game.computerBlobs.add(new Blob(0, 7));
         Game.computerBlobs.add(new Blob(7, 7));
 
-        board[0][0] = 'X';
-        board[7][0] = 'X';
-        board[0][7] = 'O';
-        board[7][7] = 'O';
+        board[0][0] = 'b';
+        board[7][0] = 'b';
+        board[0][7] = 'r';
+        board[7][7] = 'r';
 
         this.level = level;
     }
 
     // Insert Value In Empty Place (Needed For Player)
     public void insert(char value, Cell pos) {
-        if (this.board[pos.row][pos.col] == '_') {
-            this.board[pos.row][pos.col] = value;
+        if (this.board[pos.i][pos.i] == '_') {
+            this.board[pos.i][pos.j] = value;
         }
     }
+
+    public void move(char value, Cell pos, Cell p_pos) {
+        board[p_pos.i][p_pos.j] = '_';
+        board[pos.i][pos.j] = value;
+    }
+
 
     // Check If The Game Is Finished
     boolean finish() {
@@ -425,7 +431,6 @@ public class Board {
 
     void takeMove() {
 
-        //TODO: WRITE TAKE MOVE FUNCTION
 
         tempComputerBlobs.clear();
         tempPlayerBlobs.clear();
@@ -441,6 +446,15 @@ public class Board {
             System.out.println();
         }
     }
+
+    int getRowLength() {
+        return board.length;
+    }
+
+    int getColLength() {
+        return board[0].length;
+    }
+
 
 
 }

@@ -15,31 +15,63 @@ public class Game {
     // The Player Function
     private void playerPlay() {
 
-        Cell move = new Cell();
-        // Check The Player Row Location
+        Cell selectCell = new Cell();
+        Cell locationCell = new Cell();
+
+
         while (true) {
-            System.out.print("Enter row: ");
-            move.row = s.nextInt();
-            System.out.println();
-            if ((move.row > 0) && (move.row <= this.game.board.length)) {
+            System.out.println("Select Blob ");
+            System.out.print("Enter row : ");
+            selectCell.i = s.nextInt();
+            System.out.print("Enter col : ");
+            selectCell.j = s.nextInt();
+            selectCell.i--;
+            selectCell.j--;
+            if (checkBoundedBoard(selectCell.i, selectCell.j)) {
+                if (game.board[selectCell.i][selectCell.j] == 'b') {
+                    System.out.println("your choose is : b " + (selectCell.i + 1) + " " + (selectCell.j + 1));
+                    break;
+                } else System.out.println("wrong choose");
+            } else System.out.println("out of board bound");
+        }
+
+        while (true) {
+            System.out.println("next Blob location ");
+            System.out.print("Enter row : ");
+            locationCell.i = s.nextInt();
+            System.out.print("Enter col : ");
+            locationCell.j = s.nextInt();
+            locationCell.i--;
+            locationCell.j--;
+
+            if (checkType(selectCell, locationCell) == 0) {
+                System.out.println("this movement is not allowed");
+            } else {
+                if (checkType(selectCell, locationCell) == 1) {
+                    game.insert('b', locationCell);
+
+                } else game.move('b', locationCell, selectCell);
                 break;
             }
         }
-        // Check The Player Column Location
-        while (true) {
-            System.out.print("Enter column: ");
-            move.col = s.nextInt();
-            System.out.println();
-            if ((move.col > 0) && (move.col <=  this.game.board[0].length)) {
-                break;
-            }
+    }
+
+    private double getDistance(Cell one, Cell two) {
+        int ii = Math.abs(one.i - two.i);
+        int jj = Math.abs(one.j - two.j);
+        return Math.sqrt((ii * ii) + (jj * jj));
+    }
+
+    private int checkType(Cell one, Cell two) {
+        if (getDistance(one, two) > 2) return 0;
+        else {
+            if (getDistance(one, two) == 1) return 1;
+            else return 2;
         }
+    }
 
-
-        //TODO: WRITE CODE THAT CHECKS IF THE SELECTED BLOB IS A PLAYER'S BLOB
-        //TODO: WRITE CODE THAT CHOOSES THE MOVEMENT LOCATION AND TYPE FOR THE SELECTED BLOB
-
-
+    private boolean checkBoundedBoard(int i, int j) {
+        return (i >= 0 && i < game.getRowLength()) || (j >= 0 && j < game.getColLength());
     }
 
     // The Computer Function

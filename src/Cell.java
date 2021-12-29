@@ -1,12 +1,12 @@
 public class Cell {
 
-    int row;
-    int col;
+    int i;
+    int j;
 
     public Cell()
     {
-        this.row = 0;
-        this.col = 0;
+        this.i = 0;
+        this.j = 0;
     }
 
 }
