@@ -12,7 +12,12 @@ public class Game {
    static   ArrayList<Blob> playerBlobs = new ArrayList<>();
    static   ArrayList<Blob> computerBlobs = new ArrayList<>();
 
-    // The Player Function
+    /**
+     *  this method take two {@link Cell}
+     *  as Selected Cell and the Location Cell
+     *  from player
+     *  then use move or insert method
+     */
     private void playerPlay() {
 
         Cell selectCell = new Cell();
@@ -27,7 +32,7 @@ public class Game {
             selectCell.j = s.nextInt();
             selectCell.i--;
             selectCell.j--;
-            if (checkBoundedBoard(selectCell.i, selectCell.j)) {
+            if (game.checkBoundedBoard(selectCell.i, selectCell.j)) {
                 if (game.board[selectCell.i][selectCell.j] == 'b') {
                     System.out.println("your choose is : b " + (selectCell.i + 1) + " " + (selectCell.j + 1));
                     break;
@@ -57,12 +62,25 @@ public class Game {
     }
 
 
+    /**
+     *  get the distance between two point
+     * @param one the first point
+     * @param two the second point
+     * @return the ditsance between one and two
+     */
     private double getDistance(Cell one, Cell two) {
         int ii = Math.abs(one.i - two.i);
         int jj = Math.abs(one.j - two.j);
         return Math.sqrt((ii * ii) + (jj * jj));
     }
 
+    /**
+     * this method check the type of movement
+     * as one or two steps
+     * @param one the current blob location
+     * @param two the next blob location
+     * @return 0 if invalid movement , 1 for one step and 2 for two steps
+     */
     private int checkType(Cell one, Cell two) {
         if (getDistance(one, two) > 2) return 0;
         else {
@@ -71,9 +89,6 @@ public class Game {
         }
     }
 
-    private boolean checkBoundedBoard(int i, int j) {
-        return (i >= 0 && i < game.getRowLength()) || (j >= 0 && j < game.getColLength());
-    }
 
     // The Computer Function
     private void computerPlay() {
