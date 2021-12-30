@@ -256,6 +256,29 @@ public class Board {
     }
 
 
+    boolean moveUp1Right2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i-1, blob.j+2,computerBlobs,playerBlobs))
+        {   blob.i = blob.i-1;
+            blob.j = blob.j+2;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+    boolean moveDown1Right2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i+1, blob.j+2,computerBlobs,playerBlobs))
+        {   blob.i = blob.i+1;
+            blob.j = blob.j+2;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
 
 
     boolean moveLeft1(Blob blob , boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
@@ -290,6 +313,213 @@ public class Board {
     }
 
 
+
+    boolean moveUp1Left2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i-1, blob.j-2,computerBlobs,playerBlobs))
+        {   blob.i = blob.i-1;
+            blob.j = blob.j-2;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+    boolean moveDown1Left2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i+1, blob.j-2,computerBlobs,playerBlobs))
+        {   blob.i = blob.i+1;
+            blob.j = blob.j-2;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+    boolean moveUpRight1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        Blob movedBlob;
+        if (canMove(blob, blob.i - 1, blob.j+1,computerBlobs,playerBlobs))
+        {   if (isMax) {
+            movedBlob = new Blob(blob.i-1, blob.j+1);
+            computerBlobs.add(movedBlob);
+            changeBlob(movedBlob, true,computerBlobs,playerBlobs);
+            return true;
+        } else {
+            movedBlob = new Blob(blob.i-1, blob.j+1);
+            playerBlobs.add(movedBlob);
+            changeBlob(movedBlob, false,computerBlobs,playerBlobs);
+            return true;
+        }
+        }
+        else
+            return false;
+    }
+
+
+   boolean moveUp2Right1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+   {
+       if(canMove(blob,blob.i-2, blob.j+1,computerBlobs,playerBlobs))
+       {   blob.i = blob.i-2;
+           blob.j = blob.j+1;
+           changeBlob(blob,isMax,computerBlobs,playerBlobs);
+           return true;
+       }
+       else return false;
+   }
+
+
+
+
+    boolean moveUpRight2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i-2, blob.j+2,computerBlobs,playerBlobs))
+        {   blob.i = blob.i-2;
+            blob.j = blob.j+2;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+    boolean moveUpLeft1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        Blob movedBlob;
+        if (canMove(blob, blob.i - 1, blob.j-1,computerBlobs,playerBlobs))
+        {   if (isMax) {
+            movedBlob = new Blob(blob.i-1, blob.j-1);
+            computerBlobs.add(movedBlob);
+            changeBlob(movedBlob, true,computerBlobs,playerBlobs);
+            return true;
+        } else {
+            movedBlob = new Blob(blob.i-1, blob.j-1);
+            playerBlobs.add(movedBlob);
+            changeBlob(movedBlob, false,computerBlobs,playerBlobs);
+            return true;
+        }
+        }
+        else
+            return false;
+    }
+
+    boolean moveUp2Left1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i-2, blob.j-1,computerBlobs,playerBlobs))
+        {   blob.i = blob.i-2;
+            blob.j = blob.j-1;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+    boolean moveUpLeft2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i-2, blob.j-2,computerBlobs,playerBlobs))
+        {   blob.i = blob.i-2;
+            blob.j = blob.j-2;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+
+    boolean moveDownRight1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        Blob movedBlob;
+        if (canMove(blob, blob.i + 1, blob.j+1,computerBlobs,playerBlobs))
+        {   if (isMax) {
+            movedBlob = new Blob(blob.i+1, blob.j+1);
+            computerBlobs.add(movedBlob);
+            changeBlob(movedBlob, true,computerBlobs,playerBlobs);
+            return true;
+        } else {
+            movedBlob = new Blob(blob.i+1, blob.j+1);
+            playerBlobs.add(movedBlob);
+            changeBlob(movedBlob, false,computerBlobs,playerBlobs);
+            return true;
+        }
+        }
+        else
+            return false;
+    }
+
+    boolean moveDownRight2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i+2, blob.j+2,computerBlobs,playerBlobs))
+        {   blob.i = blob.i+2;
+            blob.j = blob.j +2;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+    boolean moveDownLeft1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        Blob movedBlob;
+        if (canMove(blob, blob.i + 1, blob.j-1,computerBlobs,playerBlobs))
+        {   if (isMax) {
+            movedBlob = new Blob(blob.i+1, blob.j-1);
+            computerBlobs.add(movedBlob);
+            changeBlob(movedBlob, true,computerBlobs,playerBlobs);
+            return true;
+        } else {
+            movedBlob = new Blob(blob.i+1, blob.j-1);
+            playerBlobs.add(movedBlob);
+            changeBlob(movedBlob, false,computerBlobs,playerBlobs);
+            return true;
+        }
+        }
+        else
+            return false;
+    }
+
+
+
+    boolean moveDownLeft2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i+2, blob.j-2,computerBlobs,playerBlobs))
+        {   blob.i = blob.i+2;
+            blob.j = blob.j-2;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+    boolean moveDown2Right1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i+2, blob.j+1,computerBlobs,playerBlobs))
+        {   blob.i = blob.i+2;
+            blob.j = blob.j+1;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+    boolean moveDown2Left1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
+    {
+        if(canMove(blob,blob.i+2, blob.j-1,computerBlobs,playerBlobs))
+        {   blob.i = blob.i+2;
+            blob.j = blob.j-1;
+            changeBlob(blob,isMax,computerBlobs,playerBlobs);
+            return true;
+        }
+        else return false;
+    }
+
+
+
     //     Minimax Algorithm
     int minimax(int depth, boolean isMax ,ArrayList<Blob> computerBlobs,ArrayList<Blob> playerBlobs) {
 
@@ -314,7 +544,7 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveUp1(computerblob, true,computerBlobs,playerBlobs))
+                if(moveUp1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
                 {
 
                     int b = minimax(depth + 1, false,fakeComputerBlobs,fakePlayerBlobs);
@@ -328,32 +558,21 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveUp2(computerblob, true,computerBlobs,playerBlobs))
+                if(moveUp2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
                         best = b;
+                    computerblob.i+=2;
                 }
+
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
 
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveDown1(computerblob, true,computerBlobs,playerBlobs))
-                {
-                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
-                    if (b > best)
-                        best = b;
-                }
-                fakeComputerBlobs.clear();
-                fakePlayerBlobs.clear();
-
-
-
-                fakeComputerBlobs.addAll(computerBlobs);
-                fakePlayerBlobs.addAll(playerBlobs);
-                if(moveDown2(computerblob, true,computerBlobs,playerBlobs))
+                if(moveDown1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
@@ -364,25 +583,25 @@ public class Board {
 
 
 
-
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveRight1(computerblob, true,computerBlobs,playerBlobs))
+                if(moveDown2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
                         best = b;
+                    computerblob.i-=2;
                 }
+
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
 
 
 
 
-
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveRight2(computerblob, true,computerBlobs,playerBlobs))
+                if(moveRight1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
@@ -394,13 +613,16 @@ public class Board {
 
 
 
+
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveLeft1(computerblob, true,computerBlobs,playerBlobs))
+                if(moveRight2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
                         best = b;
+
+                    computerblob.j-=2;
                 }
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
@@ -410,7 +632,7 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveLeft2(computerblob, true,computerBlobs,playerBlobs))
+                if(moveLeft1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
@@ -418,8 +640,300 @@ public class Board {
                 }
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveLeft2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUpRight1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUpRight2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUpLeft1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUpLeft2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDownRight1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDownRight2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i-=2;
+                    computerblob.j-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDownLeft1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDownLeft2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i-=2;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUp1Right2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=1;
+                    computerblob.j-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUp1Left2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=1;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUp2Right1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j-=1;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUp2Left1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j+=1;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDown1Left2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i-=1;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDown1Right2(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i-=1;
+                    computerblob.j-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDown2Right1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i-=2;
+                    computerblob.j-=1;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDown2Left1(computerblob, true,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, false, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
 
             }
+
+
+
+
+
 
             return best;
         }
@@ -432,21 +946,21 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveUp1(computerblob, false,computerBlobs,playerBlobs))
+                if(moveUp1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
                 {
 
                     int b = minimax(depth + 1, true,fakeComputerBlobs,fakePlayerBlobs);
                     if (b > best)
                         best = b;
 
-
+                    computerblob.i+=2;
                 }
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveUp2(computerblob, false,computerBlobs,playerBlobs))
+                if(moveUp2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
@@ -458,7 +972,7 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveDown1(computerblob, false,computerBlobs,playerBlobs))
+                if(moveDown1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
@@ -471,7 +985,54 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveDown2(computerblob, false,computerBlobs,playerBlobs))
+                if(moveDown2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+                    computerblob.i-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveRight1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveRight2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+                    computerblob.j-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveLeft1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
@@ -485,11 +1046,91 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveRight1(computerblob, false,computerBlobs,playerBlobs))
+                if(moveLeft2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
                         best = b;
+
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUpRight1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUpRight2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUpLeft1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUpLeft2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDownRight1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+
                 }
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
@@ -500,7 +1141,25 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveRight2(computerblob, false,computerBlobs,playerBlobs))
+                if(moveDownRight2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i-=2;
+                    computerblob.j-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDownLeft1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
@@ -514,11 +1173,118 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveLeft1(computerblob, false,computerBlobs,playerBlobs))
+                if(moveDownLeft2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
                         best = b;
+
+
+                    computerblob.i-=2;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUp1Right2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=1;
+                    computerblob.j-=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUp1Left2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=1;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUp2Right1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j-=1;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveUp2Left1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j+=1;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDown1Left2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i-=1;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDown1Right2(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i-=1;
+                    computerblob.j-=2;
                 }
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
@@ -528,14 +1294,37 @@ public class Board {
 
                 fakeComputerBlobs.addAll(computerBlobs);
                 fakePlayerBlobs.addAll(playerBlobs);
-                if(moveLeft2(computerblob, false,computerBlobs,playerBlobs))
+                if(moveDown2Right1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
                 {
                     int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
                     if (b > best)
                         best = b;
+
+
+                    computerblob.i-=2;
+                    computerblob.j-=1;
                 }
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
+
+
+
+
+                fakeComputerBlobs.addAll(computerBlobs);
+                fakePlayerBlobs.addAll(playerBlobs);
+                if(moveDown2Left1(computerblob, false,fakeComputerBlobs,fakePlayerBlobs))
+                {
+                    int b = minimax(depth+1, true, fakeComputerBlobs, fakePlayerBlobs);
+                    if (b > best)
+                        best = b;
+
+
+                    computerblob.i+=2;
+                    computerblob.j+=2;
+                }
+                fakeComputerBlobs.clear();
+                fakePlayerBlobs.clear();
+
 
             }
 
@@ -564,7 +1353,7 @@ public class Board {
              ) {
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
-            if(moveUp1(computerblob,true,computerBlobs,playerBlobs))
+            if(moveUp1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
             {
 
                 int b = minimax(0, false,fakeComputerBlobs,fakePlayerBlobs);
@@ -582,15 +1371,19 @@ public class Board {
 
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
-            if(moveUp2(computerblob,true,computerBlobs,playerBlobs))
+            if(moveUp2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
             {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i+=2;
                 if (b > best)
                 { best = b;
                   movement = "UP2";
                   bestblob.i = computerblob.i;
                   bestblob.j = computerblob.j;
                 }
+
+
             }
             fakeComputerBlobs.clear();
             fakePlayerBlobs.clear();
@@ -598,7 +1391,7 @@ public class Board {
 
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
-            if(moveDown1(computerblob,true,computerBlobs,playerBlobs))
+            if(moveDown1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
             {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
                 if (b > best)
@@ -615,9 +1408,10 @@ public class Board {
 
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
-            if(moveDown2(computerblob,true,computerBlobs,playerBlobs))
+            if(moveDown2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
             {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+                computerblob.i-=2;
                 if (b > best)
                 { best = b;
                  movement = "DOWN2";
@@ -633,7 +1427,7 @@ public class Board {
 
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
-            if(moveRight1(computerblob,true,computerBlobs,playerBlobs))
+            if(moveRight1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
             {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
                 if (b > best)
@@ -652,9 +1446,12 @@ public class Board {
 
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
-            if(moveRight2(computerblob,true,computerBlobs,playerBlobs))
+            if(moveRight2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
             {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.j-=2;
+
                 if (b > best)
                 {best = b;
                 movement = "RIGHT2";
@@ -670,7 +1467,7 @@ public class Board {
 
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
-            if(moveLeft1(computerblob,true,computerBlobs,playerBlobs))
+            if(moveLeft1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
             {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
                 if (b > best)
@@ -687,9 +1484,12 @@ public class Board {
 
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
-            if(moveLeft2(computerblob,true,computerBlobs,playerBlobs))
+            if(moveLeft2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
             {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.j+=2;
+
                 if (b > best)
                 {best = b;
                 movement = "LEFT2";
@@ -698,6 +1498,316 @@ public class Board {
             }
             fakeComputerBlobs.clear();
             fakePlayerBlobs.clear();
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveUpRight1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+                if (b > best)
+                {best = b;
+                    movement = "UP1RIGHT1";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveUp1Right2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i+=1;
+                computerblob.j-=2;
+
+                if (b > best)
+                {best = b;
+                    movement = "UP1RIGHT2";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveUp2Right1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i+=2;
+                computerblob.j-=1;
+
+                if (b > best)
+                {best = b;
+                    movement = "UP2RIGHT1";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveUpRight2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i+=2;
+                computerblob.j-=2;
+
+                if (b > best)
+                {best = b;
+                    movement = "UP2RIGHT2";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveUpLeft1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+                if (b > best)
+                {best = b;
+                    movement = "UP1LEFT1";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveUp2Left1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i+=2;
+                computerblob.j+=1;
+
+                if (b > best)
+                {best = b;
+                    movement = "UP2LEFT1";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveUp1Left2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i+=1;
+                computerblob.j+=2;
+
+                if (b > best)
+                {best = b;
+                    movement = "UP1LEFT2";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveUpLeft2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i+=2;
+                computerblob.j+=2;
+
+                if (b > best)
+                {best = b;
+                    movement = "UP2LEFT2";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveDownRight1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+                if (b > best)
+                {best = b;
+                    movement = "DOWN1RIGHT1";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveDown1Right2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i-=1;
+                computerblob.j-=2;
+
+                if (b > best)
+                {best = b;
+                    movement = "DOWN1RIGHT2";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveDown2Right1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i-=2;
+                computerblob.j-=1;
+
+                if (b > best)
+                {best = b;
+                    movement = "DOWN2RIGHT1";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveDownRight2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i-=2;
+                computerblob.j-=2;
+
+                if (b > best)
+                {best = b;
+                    movement = "DOWN2RIGHT2";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveDownLeft1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+                if (b > best)
+                {best = b;
+                    movement = "DOWN1LEFT1";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveDown2Left1(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i-=2;
+                computerblob.j+=1;
+
+                if (b > best)
+                {best = b;
+                    movement = "DOWN2LEFT1";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveDown1Left2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i-=1;
+                computerblob.j+=2;
+
+                if (b > best)
+                {best = b;
+                    movement = "DOWN1LEFT2";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
+
+            fakeComputerBlobs.addAll(computerBlobs);
+            fakePlayerBlobs.addAll(playerBlobs);
+            if(moveDownLeft2(computerblob,true,fakeComputerBlobs,fakePlayerBlobs))
+            {
+                int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
+
+                computerblob.i-=2;
+                computerblob.j-=2;
+
+                if (b > best)
+                {best = b;
+                    movement = "DOWN2LEFT2";
+                    bestblob.i = computerblob.i;
+                    bestblob.j = computerblob.j;}
+            }
+            fakeComputerBlobs.clear();
+            fakePlayerBlobs.clear();
+
+
+
         }
 
         return new Move(bestblob,movement);
