@@ -36,7 +36,12 @@ public class Board {
 
 
 
-    // Check If The Game Is Finished
+    /**
+     * This function checks if the game reached the end.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the game reached the end and false otherwise.
+       */
     boolean finish(ArrayList<Blob> computerBlobs,ArrayList<Blob> playerBlobs) {
 
         if (playerBlobs.size() == 0) {
@@ -57,7 +62,15 @@ public class Board {
         return true;
     }
 
-
+    /**
+     * This function is used in the minimax function.It checks if the computer is winning the game or not by comparing
+     * computer's blob list length with the player's blob list length.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns an int that represents the score,that score signifies if the computer is winning or not;
+     * if it's bigger than zero then the computer is winning, if it's smaller than zero then computer is losing,if it's
+     * equal to zero then the game is reaching a draw status.
+     * */
     int evaluate(ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         int utility = 0;
 
@@ -81,7 +94,16 @@ public class Board {
 
     }
 
-
+    /**
+     * This function checks if the move is possible; it checks if the new position is taken by another blob, or it's
+     * off board.
+     * @param blob is the blob that is need to be moved.
+     * @param i is the location on the i axis.
+     * @param j is the location on the j axis.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the move is possible and false otherwise
+     * */
     boolean canMove(Blob blob, int i, int j,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         int distancei;
         int distancej;
@@ -113,6 +135,18 @@ public class Board {
         }
         return true;
     }
+
+
+    /**
+     * This function changes the blobs that are close to a specified blob. If the isMax value is true then the blobs that
+     * are going to change are the ones from the player's blob list and the changed blobs will be added to the computer's
+     * blob list, if the isMax value is false then the process will be the same but the changed blobs will be taken from
+     * the computer's blob list and added to the player's blob list.
+     * @param blob is the blob that you want to check if any blob is around it.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * */
 
     void changeBlob(Blob blob , boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -159,6 +193,17 @@ public class Board {
         }
     }
 
+
+    /**
+     * This function is used to move the blob upwards by one step. The function does not move the blob that was sent from
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveUp1(Blob blob, boolean isMax ,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
 
       Blob movedBlob;
@@ -180,6 +225,16 @@ public class Board {
 
     }
 
+
+    /**
+     * This function is used to move the blob upwards by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveUp2(Blob blob , boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
 
@@ -192,7 +247,15 @@ public class Board {
     }
 
 
-
+    /**
+     * This function is used to move the blob downwards by one step. The function does not move the blob that was sent from
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
     boolean moveDown1(Blob blob , boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         Blob movedBlob;
@@ -213,6 +276,17 @@ public class Board {
             return false;
     }
 
+
+
+    /**
+     * This function is used to move the blob downwards by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveDown2(Blob blob , boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i+2, blob.j,computerBlobs,playerBlobs))
@@ -224,7 +298,15 @@ public class Board {
     }
 
 
-
+    /**
+     * This function is used to move the blob to the right by one step. The function does not move the blob that was sent from
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
     boolean moveRight1(Blob blob , boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         Blob movedBlob;
@@ -245,6 +327,16 @@ public class Board {
             return false;
     }
 
+
+    /**
+     * This function is used to move the blob to the right by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveRight2(Blob blob , boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i, blob.j+2,computerBlobs,playerBlobs))
@@ -255,6 +347,16 @@ public class Board {
         else return false;
     }
 
+
+    /**
+     * This function is used to move the blob upwards by one step and to the right by two steps.
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
 
     boolean moveUp1Right2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -267,7 +369,14 @@ public class Board {
         else return false;
     }
 
-
+    /**
+     * This function is used to move the blob downwards by one step and to the right by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
     boolean moveDown1Right2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i+1, blob.j+2,computerBlobs,playerBlobs))
@@ -280,7 +389,15 @@ public class Board {
     }
 
 
-
+    /**
+     * This function is used to move the blob to the left by one step. The function does not move the blob that was sent from
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
     boolean moveLeft1(Blob blob , boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         Blob movedBlob;
@@ -302,6 +419,16 @@ public class Board {
     }
 
 
+
+    /**
+     * This function is used to move the blob to left by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveLeft2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i, blob.j-2,computerBlobs,playerBlobs))
@@ -313,6 +440,15 @@ public class Board {
     }
 
 
+
+    /**
+     * This function is used to move the blob upwards by one step and to the left by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
 
     boolean moveUp1Left2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -326,6 +462,16 @@ public class Board {
     }
 
 
+
+    /**
+     * This function is used to move the blob downwards by one step and to the left by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveDown1Left2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i+1, blob.j-2,computerBlobs,playerBlobs))
@@ -337,6 +483,18 @@ public class Board {
         else return false;
     }
 
+
+
+    /**
+     * This function is used to move the blob upwards by one step and to the right by one step.
+     * The function does not move the blob that was sent from
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
 
     boolean moveUpRight1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -359,6 +517,16 @@ public class Board {
     }
 
 
+
+    /**
+     * This function is used to move the blob upwards by two steps and to the right by one step.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
    boolean moveUp2Right1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
    {
        if(canMove(blob,blob.i-2, blob.j+1,computerBlobs,playerBlobs))
@@ -371,7 +539,14 @@ public class Board {
    }
 
 
-
+    /**
+     * This function is used to move the blob upwards by two steps and to the right by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
 
     boolean moveUpRight2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -384,6 +559,17 @@ public class Board {
         else return false;
     }
 
+
+    /**
+     * This function is used to move the blob upwards by one step and to the left by one step.
+     * The function does not move the blob that was sent from
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
 
     boolean moveUpLeft1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -405,6 +591,17 @@ public class Board {
             return false;
     }
 
+
+
+    /**
+     * This function is used to move the blob upwards by two steps and to the left by one step.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveUp2Left1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i-2, blob.j-1,computerBlobs,playerBlobs))
@@ -417,6 +614,15 @@ public class Board {
     }
 
 
+    /**
+     * This function is used to move the blob upwards by two steps and to the left by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveUpLeft2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i-2, blob.j-2,computerBlobs,playerBlobs))
@@ -428,7 +634,16 @@ public class Board {
         else return false;
     }
 
-
+    /**
+     * This function is used to move the blob downwards by one step and to the right by one step.
+     * The function does not move the blob that was sent from
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
 
     boolean moveDownRight1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -450,6 +665,17 @@ public class Board {
             return false;
     }
 
+
+
+    /**
+     * This function is used to move the blob downwards by two steps and to the right by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
+
     boolean moveDownRight2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i+2, blob.j+2,computerBlobs,playerBlobs))
@@ -461,6 +687,17 @@ public class Board {
         else return false;
     }
 
+
+    /**
+     * This function is used to move the blob downwards by one step and to the left by one step.
+     * The function does not move the blob that was sent from
+     * the parameter, but it spawns a new one.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
 
     boolean moveDownLeft1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -483,7 +720,14 @@ public class Board {
     }
 
 
-
+    /**
+     * This function is used to move the blob downwards by two steps and to the left by two steps.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
     boolean moveDownLeft2(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i+2, blob.j-2,computerBlobs,playerBlobs))
@@ -496,6 +740,14 @@ public class Board {
     }
 
 
+    /**
+     * This function is used to move the blob downwards by two steps and to the right by one step.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
     boolean moveDown2Right1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
         if(canMove(blob,blob.i+2, blob.j+1,computerBlobs,playerBlobs))
@@ -506,6 +758,17 @@ public class Board {
         }
         else return false;
     }
+
+
+
+    /**
+     * This function is used to move the blob downwards by one step and to the left by one step.
+     * @param blob is the blob that you want to move.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns true if the movement was successful and false otherwise.
+     * */
 
     boolean moveDown2Left1(Blob blob, boolean isMax,ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs)
     {
@@ -520,7 +783,14 @@ public class Board {
 
 
 
-    //     Minimax Algorithm
+    /**
+     * This function is the minimax algorithm.
+     * @param depth is the tree layer that want to stop in.
+     * @param isMax is a boolean that tells if the game is being played on max or min; true is max,false is min.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns the score.
+     * */
     int minimax(int depth, boolean isMax ,ArrayList<Blob> computerBlobs,ArrayList<Blob> playerBlobs) {
 
         //TODO: COMPLETE MINIMAX FUNCTION
@@ -1335,7 +1605,13 @@ public class Board {
     }
 
 
-    // Start From Here To Find The Best Move By Calling The Minimax Algorithm For Each Of The Computer Possible Moves
+    /**
+     * This function is used to determine which move is the best. It picks the best blob to move and the best movement
+     * for the selected blob.
+     * @param computerBlobs is the computer's blob list.
+     * @param playerBlobs is the player's blob list.
+     * @return Function returns a move object that contains the position of the selected blob, and the best movement
+     * */
     Move bestMove(ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
 
         int best = -1000;
