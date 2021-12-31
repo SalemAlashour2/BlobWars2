@@ -59,7 +59,7 @@ public class Game {
                 break;
             }
         }
-       // s.close();
+
     }
 
     /**
