@@ -9,37 +9,84 @@ public class Game {
     /**
      * THESE TWO LISTS DESCRIBE THE BLOBS IN THE BOARD EACH HAS A POSITION
      */
-   static   ArrayList<Blob> playerBlobs;
-   static   ArrayList<Blob> computerBlobs;
+   static   ArrayList<Blob> playerBlobs = new ArrayList<>();
+   static   ArrayList<Blob> computerBlobs = new ArrayList<>();
 
-    // The Player Function
+    /**
+     *  this method take two {@link Cell}
+     *  as Selected Cell and the Location Cell
+     *  from player
+     *  then use move or insert method
+     */
     private void playerPlay() {
 
-//        Move move = new Move();
-//        // Check The Player Row Location
-//        while (true) {
-//            System.out.print("Enter row: ");
-//            move.row = s.nextInt();
-//            System.out.println();
-//            if ((move.row > 0) && (move.row <= this.game.board.length)) {
-//                break;
-//            }
-//        }
-//        // Check The Player Column Location
-//        while (true) {
-//            System.out.print("Enter column: ");
-//            move.col = s.nextInt();
-//            System.out.println();
-//            if ((move.col > 0) && (move.col <=  this.game.board[0].length)) {
-//                break;
-//            }
-//        }
+        Cell selectCell = new Cell();
+        Cell locationCell = new Cell();
 
 
-        //TODO: WRITE CODE THAT CHECKS IF THE SELECTED BLOB IS A PLAYER'S BLOB
-        //TODO: WRITE CODE THAT CHOOSES THE MOVEMENT LOCATION AND TYPE FOR THE SELECTED BLOB
+        while (true) {
+            System.out.println("Select Blob ");
+            System.out.print("Enter row : ");
+            selectCell.i = s.nextInt();
+            System.out.print("Enter col : ");
+            selectCell.j = s.nextInt();
+            selectCell.i--;
+            selectCell.j--;
+            if (game.checkBoundedBoard(selectCell.i, selectCell.j)) {
+                if (game.board[selectCell.i][selectCell.j] == 'b') {
+                    System.out.println("your choose is : b " + (selectCell.i + 1) + " " + (selectCell.j + 1));
+                    break;
+                } else System.out.println("wrong choose");
+            } else System.out.println("out of board bound");
+        }
 
+        while (true) {
+            System.out.println("next Blob location ");
+            System.out.print("Enter row : ");
+            locationCell.i = s.nextInt();
+            System.out.print("Enter col : ");
+            locationCell.j = s.nextInt();
+            locationCell.i--;
+            locationCell.j--;
 
+            if (checkType(selectCell, locationCell) == 0) {
+                System.out.println("this movement is not allowed");
+            } else {
+                if (checkType(selectCell, locationCell) == 1) {
+                    game.insert('b', locationCell);
+
+                } else game.move('b', locationCell, selectCell);
+                break;
+            }
+        }
+        s.close();
+    }
+
+    /**
+     *  get the distance between two point
+     * @param one the first point
+     * @param two the second point
+     * @return the ditsance between one and two
+     */
+    private double getDistance(Cell one, Cell two) {
+        int ii = Math.abs(one.i - two.i);
+        int jj = Math.abs(one.j - two.j);
+        return Math.sqrt((ii * ii) + (jj * jj));
+    }
+
+    /**
+     * this method check the type of movement
+     * as one or two steps
+     * @param one the current blob location
+     * @param two the next blob location
+     * @return 0 if invalid movement , 1 for one step and 2 for two steps
+     */
+    private int checkType(Cell one, Cell two) {
+        if (getDistance(one, two) > 2) return 0;
+        else {
+            if (getDistance(one, two) == 1) return 1;
+            else return 2;
+        }
     }
 
     // The Computer Function
@@ -81,10 +128,6 @@ public class Game {
 
     public static void main(String[] args)
     {
-
-
-
-
         Game lets_play = new Game();
         lets_play.start();
     }
