@@ -59,9 +59,7 @@ public class Game {
                 break;
             }
         }
-
-
-        //s.close();
+      //  s.close();
     }
 
     /**
@@ -93,10 +91,7 @@ public class Game {
 
     // The Computer Function
     private void computerPlay() {
-
-
         this.game.takeMove();
-
     }
 
     public void start() {
