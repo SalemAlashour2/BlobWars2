@@ -25,16 +25,30 @@ public class Board {
         Game.computerBlobs.add(new Blob(0, 7));
         Game.computerBlobs.add(new Blob(7, 7));
 
-        board[0][0] = 'X';
-        board[7][0] = 'X';
-        board[0][7] = 'O';
-        board[7][7] = 'O';
+        board[0][0] = 'b';
+        board[7][0] = 'b';
+        board[0][7] = 'r';
+        board[7][7] = 'r';
 
         this.level = level;
     }
 
+    // Insert Value In Empty Place (Needed For Player)
+    public void insert(char value, Cell pos) {
+        if (checkBoundedBoard(pos.i, pos.j))
+            if (this.board[pos.i][pos.i] == '_') {
+                this.board[pos.i][pos.j] = value;
+            }
+    }
 
 
+    public void move(char value, Cell pos, Cell p_pos) {
+        if (checkBoundedBoard(pos.i, pos.j))
+            if (board[pos.i][pos.j] == '_') {
+                board[p_pos.i][p_pos.j] = '_';
+                board[pos.i][pos.j] = value;
+            }
+    }
 
     /**
      * This function checks if the game reached the end.
@@ -2089,11 +2103,41 @@ public class Board {
         return new Move(bestblob,movement);
     }
 
+    /**
+     * represent the movement after best move of MiniMax algorithm
+     * with 24 move
+     */
     void takeMove() {
+        Move moveTo = this.bestMove(Game.computerBlobs, Game.playerBlobs);
+        int i = moveTo.blob.i;
+        int j = moveTo.blob.j;
 
-        //TODO: WRITE TAKE MOVE FUNCTION
-
-
+        switch (moveTo.movement) {
+            case "UP1" -> insert('r', new Cell(i - 1, j));
+            case "UP2" -> move('r', new Cell(i - 2, j), new Cell(i, j));
+            case "DOWN1" -> insert('r', new Cell(i + 1, j));
+            case "DOWN2" -> move('r', new Cell(i + 2, j), new Cell(i, j));
+            case "RIGHT1" -> insert('r', new Cell(i, j + 1));
+            case "RIGHT2" -> move('r', new Cell(i, j + 2), new Cell(i, j));
+            case "LEFT1" -> insert('r', new Cell(i, j - 1));
+            case "LEFT2" -> move('r', new Cell(i, j - 2), new Cell(i, j));
+            case "UP1RIGHT1" -> insert('r', new Cell(i - 1, j + 1));
+            case "UP2RIGHT1" -> move('r', new Cell(i - 2, j + 1), new Cell(i, j));
+            case "UP1RIGHT2" -> move('r', new Cell(i - 1, j + 2), new Cell(i, j));
+            case "UP2RIGHT2" -> move('r', new Cell(i - 2, j + 2), new Cell(i, j));
+            case "DOWN1RIGHT1" -> insert('r', new Cell(i + 1, j + 1));
+            case "DOWN2RIGHT1" -> move('r', new Cell(i + 2, j + 1), new Cell(i, j));
+            case "DOWN1RIGHT2" -> move('r', new Cell(i + 1, j + 2), new Cell(i, j));
+            case "DOWN2RIGHT2" -> move('r', new Cell(i + 2, j + 2), new Cell(i, j));
+            case "UP1LEFT1" -> insert('r', new Cell(i - 1, j - 1));
+            case "UP2LEFT1" -> move('r', new Cell(i - 2, j - 1), new Cell(i, j));
+            case "UP1LEFT2" -> move('r', new Cell(i - 1, j - 2), new Cell(i, j));
+            case "UP2LEFT2" -> move('r', new Cell(i - 2, j - 2), new Cell(i, j));
+            case "DOWN1LEFT1" -> insert('r', new Cell(i + 1, j - 1));
+            case "DOWN2LEFT1" -> move('r', new Cell(i + 2, j - 1), new Cell(i, j));
+            case "DOWN1LEFT2" -> move('r', new Cell(i + 1, j - 2), new Cell(i, j));
+            case "DOWN2LEFT2" -> move('r', new Cell(i + 2, j - 2), new Cell(i, j));
+        }
     }
 
     void printBoard() {
@@ -2105,6 +2149,37 @@ public class Board {
         }
     }
 
+
+    /**
+     * return number of rows
+     *
+     * @return size as int value
+     */
+    private int getRowLength() {
+        return board.length;
+    }
+
+    /**
+     * return number of columns
+     *
+     * @return size as int value
+     */
+    private int getColLength() {
+        return board[0].length;
+    }
+
+    /**
+     * this function return ture if the indexes is in board
+     *
+     * @param i is row index
+     * @param j is column index
+     * @return boolean value
+     */
+    public boolean checkBoundedBoard(int i, int j) {
+
+
+        return (i >= 0 && i < getRowLength()) || (j >= 0 && j < getColLength());
+    }
 
 }
 
