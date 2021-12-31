@@ -97,12 +97,8 @@ public class Game {
     public void start() {
 
 
-        System.out.print("Enter the Game Level: ");
-        int level = s.nextInt();
 
-
-
-        this.game = new Board(8, 8, level);
+        this.game = new Board(8, 8);
 
         this.game.printBoard();
 

@@ -5,7 +5,7 @@ public class Board {
     char[][] board;
     int level = 0;
 
-    public Board(int row, int col, int level) {
+    public Board(int row, int col) {
 
         this.board = new char[row][col];
         for (int i = 0; i < row; i++) {
@@ -24,7 +24,6 @@ public class Board {
         board[0][7] = 'r';
         board[7][7] = 'r';
 
-        this.level = level;
     }
 
     // Insert Value In Empty Place (Needed For Player)
@@ -32,40 +31,38 @@ public class Board {
         if (checkBoundedBoard(pos.i, pos.j))
             if (this.board[pos.i][pos.j] == '_') {
                 this.board[pos.i][pos.j] = value;
-                if (value == 'b') Game.playerBlobs.add(new Blob(pos.i, pos.j)) ;
-                else Game.computerBlobs.add(new Blob(pos.i, pos.j)) ;
-                paintBlob(value,pos);
+                if (value == 'b') Game.playerBlobs.add(new Blob(pos.i, pos.j));
+                else Game.computerBlobs.add(new Blob(pos.i, pos.j));
+                paintBlob(value, pos);
 
             }
     }
-
 
     public void move(char value, Cell pos, Cell p_pos) {
         if (checkBoundedBoard(pos.i, pos.j))
             if (board[pos.i][pos.j] == '_') {
                 board[p_pos.i][p_pos.j] = '_';
                 board[pos.i][pos.j] = value;
-                deleteBlob(value,pos,p_pos);
-                paintBlob(value,pos);
+                deleteBlob(value, pos, p_pos);
+                paintBlob(value, pos);
 
             }
 
 
     }
 
-    void deleteBlob(char blob,Cell pos,Cell p_pos){
-        if (blob =='b'){
-            for (Blob b: Game.playerBlobs){
-                if (b.i == p_pos.i && b.j == p_pos.j){
+    void deleteBlob(char blob, Cell pos, Cell p_pos) {
+        if (blob == 'b') {
+            for (Blob b : Game.playerBlobs) {
+                if (b.i == p_pos.i && b.j == p_pos.j) {
                     Game.playerBlobs.remove(b);
                     break;
                 }
             }
             Game.playerBlobs.add(new Blob(pos.i, pos.j));
-        }
-        else {
-            for (Blob b: Game.computerBlobs){
-                if (b.i == p_pos.i && b.j == p_pos.j){
+        } else {
+            for (Blob b : Game.computerBlobs) {
+                if (b.i == p_pos.i && b.j == p_pos.j) {
                     Game.computerBlobs.remove(b);
                     break;
                 }
@@ -80,112 +77,111 @@ public class Board {
 
 
         if (blob == 'b') {
-            for (int ii = 0; ii < Game.computerBlobs.size();) {
+            for (int ii = 0; ii < Game.computerBlobs.size(); ) {
 
                 Blob b = Game.computerBlobs.get(ii);
                 boolean ok = false;
-                if (b.i == i+1 && b.j == j){
+                if (b.i == i + 1 && b.j == j) {
+                    Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    Game.playerBlobs.add(b);
-                    board[i+1][j]='b';
+                    board[i + 1][j] = 'b';
                     ok = true;
                 }
-                if (b.i == i-1 && b.j == j){
+                if (b.i == i - 1 && b.j == j) {
+                    Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    Game.playerBlobs.add(b);
-                    board[i-1][j] = 'b';
+                    board[i - 1][j] = 'b';
                     ok = true;
                 }
-                if (b.i == i && b.j == j+1){
+                if (b.i == i && b.j == j + 1) {
+                    Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    Game.playerBlobs.add(b);
-                    board[i][j+1] = 'b';
+                    board[i][j + 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i && b.j == j-1){
+                if (b.i == i && b.j == j - 1) {
+                    Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    Game.playerBlobs.add(b);
-                    board[i][j+1] = 'b';
+                    board[i][j + 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i+1 && b.j == j+1){
+                if (b.i == i + 1 && b.j == j + 1) {
+                    Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    Game.playerBlobs.add(b);
-                    board[i+1][j+1] = 'b';
+                    board[i + 1][j + 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i-1 && b.j == j-1){
+                if (b.i == i - 1 && b.j == j - 1) {
+                    Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    Game.playerBlobs.add(b);
-                    board[i-1][j-1] = 'b';
+                    board[i - 1][j - 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i+1 && b.j == j-1){
+                if (b.i == i + 1 && b.j == j - 1) {
+                    Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    Game.playerBlobs.add(b);
-                    board[i+1][j-1] = 'b';
+                    board[i + 1][j - 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i-1 && b.j == j+1){
+                if (b.i == i - 1 && b.j == j + 1) {
+                    Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    Game.playerBlobs.add(b);
-                    board[i-1][j+1] = 'b';
+                    board[i - 1][j + 1] = 'b';
                     ok = true;
                 }
                 if (!ok) ii++;
-
             }
-        }
-        else {
-            for (int ii = 0; ii < Game.playerBlobs.size();) {
+        } else {
+            for (int ii = 0; ii < Game.playerBlobs.size(); ) {
                 Blob b = Game.playerBlobs.get(ii);
                 boolean ok = false;
-                if (b.i == i+1 && b.j == j){
+                if (b.i == i + 1 && b.j == j) {
+                    Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    Game.computerBlobs.add(b);
-                    board[i+1][j]='r';
+
+                    board[i + 1][j] = 'r';
                     ok = true;
                 }
-                if (b.i == i-1 && b.j == j){
+                if (b.i == i - 1 && b.j == j) {
+                    Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    Game.computerBlobs.add(b);
-                    board[i-1][j] = 'r';
+                    board[i - 1][j] = 'r';
                     ok = true;
                 }
-                if (b.i == i && b.j == j+1){
+                if (b.i == i && b.j == j + 1) {
+                    Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    Game.computerBlobs.add(b);
-                    board[i][j+1] = 'r';
+                    board[i][j + 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i && b.j == j-1){
+                if (b.i == i && b.j == j - 1) {
+                    Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    Game.computerBlobs.add(b);
-                    board[i][j+1] = 'r';
+                    board[i][j + 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i+1 && b.j == j+1){
+                if (b.i == i + 1 && b.j == j + 1) {
+                    Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    Game.computerBlobs.add(b);
-                    board[i+1][j+1] = 'r';
+                    board[i + 1][j + 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i-1 && b.j == j-1){
+                if (b.i == i - 1 && b.j == j - 1) {
+                    Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    Game.computerBlobs.add(b);
-                    board[i-1][j-1] = 'r';
+                    board[i - 1][j - 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i+1 && b.j == j-1){
+                if (b.i == i + 1 && b.j == j - 1) {
+                    Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    Game.computerBlobs.add(b);
-                    board[i+1][j-1] = 'r';
+                    board[i + 1][j - 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i-1 && b.j == j+1){
+                if (b.i == i - 1 && b.j == j + 1) {
+                    Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    Game.computerBlobs.add(b);
-                    board[i-1][j+1] = 'r';
+                    board[i - 1][j + 1] = 'r';
                     ok = true;
                 }
                 if (!ok) ii++;
@@ -193,8 +189,6 @@ public class Board {
             }
 
         }
-
-
     }
 
     /**
@@ -272,7 +266,7 @@ public class Board {
         int distancej;
 
 
-        if(i<0 || i>7 || j<0 || j>7)
+        if (i < 0 || i > 7 || j < 0 || j > 7)
             return false;
 
 
@@ -1657,15 +1651,13 @@ public class Board {
                     bestblob.i = computerblob.i;
                     bestblob.j = computerblob.j;
                 }
-
-
             }
 
             fakeComputerBlobs.clear();
             fakePlayerBlobs.clear();
-
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
+
             if (moveUp2(computerblob, true, fakeComputerBlobs, fakePlayerBlobs)) {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
 
@@ -1696,10 +1688,6 @@ public class Board {
             }
 
 
-
-
-
-
             fakeComputerBlobs.clear();
             fakePlayerBlobs.clear();
 
@@ -1716,10 +1704,6 @@ public class Board {
                     bestblob.j = computerblob.j;
                 }
             }
-
-
-
-
 
 
             fakeComputerBlobs.clear();
@@ -2058,23 +2042,23 @@ public class Board {
                 }
             }
 
-            for (Blob computerBlob:
-                    computerBlobs) {
-                System.out.println("C: "+computerBlob.i + " "+computerBlob.j);
-            }
-            for (Blob playerBlob:
-                    playerBlobs) {
-                System.out.println("P: "+playerBlob.i+" "+playerBlob.j);
-            }
+//            for (Blob computerBlob:
+//                    computerBlobs) {
+//                System.out.println("C: "+computerBlob.i + " "+computerBlob.j);
+//            }
+//            for (Blob playerBlob:
+//                    playerBlobs) {
+//                System.out.println("P: "+playerBlob.i+" "+playerBlob.j);
+//            }
 
-            for (Blob computerBlob:
-                    fakeComputerBlobs) {
-                System.out.println("FC: "+computerBlob.i + " "+computerBlob.j);
-            }
-            for (Blob playerBlob:
-                    fakePlayerBlobs) {
-                System.out.println("FP: "+playerBlob.i+" "+playerBlob.j);
-            }
+//            for (Blob computerBlob:
+//                    fakeComputerBlobs) {
+//                System.out.println("FC: "+computerBlob.i + " "+computerBlob.j);
+//            }
+//            for (Blob playerBlob:
+//                    fakePlayerBlobs) {
+//                System.out.println("FP: "+playerBlob.i+" "+playerBlob.j);
+//            }
 
 
             fakeComputerBlobs.clear();
@@ -2083,6 +2067,7 @@ public class Board {
 
             fakeComputerBlobs.addAll(computerBlobs);
             fakePlayerBlobs.addAll(playerBlobs);
+
             if (moveDownLeft2(computerblob, true, fakeComputerBlobs, fakePlayerBlobs)) {
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
 
@@ -2096,8 +2081,6 @@ public class Board {
                     bestblob.j = computerblob.j;
                 }
             }
-
-
 
 
             fakeComputerBlobs.clear();
@@ -2114,28 +2097,14 @@ public class Board {
      * with 24 move
      */
     void takeMove() {
-//        for (Blob computerBlob:
-//                Game.computerBlobs) {
-//            System.out.println("C: "+computerBlob.i + " "+computerBlob.j);
-//        }
-//        for (Blob playerBlob:
-//                Game.playerBlobs) {
-//            System.out.println("P: "+playerBlob.i+" "+playerBlob.j);
-//        }
+
         Move moveTo = this.bestMove(Game.computerBlobs, Game.playerBlobs);
         int i = moveTo.blob.i;
         int j = moveTo.blob.j;
 
-//        for (Blob computerBlob:
-//                Game.computerBlobs) {
-//            System.out.println("AC: "+computerBlob.i + " "+computerBlob.j);
-//        }
-//        for (Blob playerBlob:
-//                Game.playerBlobs) {
-//            System.out.println("AP: "+playerBlob.i+" "+playerBlob.j);
-//        }
+
         System.out.println(moveTo.movement);
-        //System.out.println(moveTo.blob.i + "\t" +moveTo.blob.j);
+        System.out.println(moveTo.blob.i + "\t" + moveTo.blob.j);
 
         switch (moveTo.movement) {
             case "UP1" -> insert('r', new Cell(i - 1, j));
@@ -2163,9 +2132,6 @@ public class Board {
             case "DOWN1LEFT2" -> move('r', new Cell(i + 1, j - 2), new Cell(i, j));
             case "DOWN2LEFT2" -> move('r', new Cell(i + 2, j - 2), new Cell(i, j));
         }
-
-
-
     }
 
     void printBoard() {
