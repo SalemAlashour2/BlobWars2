@@ -68,10 +68,10 @@ public class Game {
      * @param two the second point
      * @return the ditsance between one and two
      */
-    private double getDistance(Cell one, Cell two) {
+    private int getDistance(Cell one, Cell two) {
         int ii = Math.abs(one.i - two.i);
         int jj = Math.abs(one.j - two.j);
-        return Math.sqrt((ii * ii) + (jj * jj));
+        return (int)Math.sqrt((ii * ii) + (jj * jj));
     }
 
     /**
