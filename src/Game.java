@@ -59,7 +59,7 @@ public class Game {
                 break;
             }
         }
-        //s.close();
+
     }
 
     /**
@@ -91,7 +91,6 @@ public class Game {
         }
     }
 
-    // The Computer Function
     private void computerPlay() {
         this.game.takeMove();
     }
@@ -101,15 +100,17 @@ public class Game {
 
         System.out.print("Enter the Game Level: ");
         int level = s.nextInt();
+        System.out.print("\n"+"Enter board width: ");
+        int width = s.nextInt();
+        System.out.print("\n"+"Enter board height: ");
+        int height = s.nextInt();
 
 
-
-        this.game = new Board(8, 8, level);
+        this.game = new Board(width, height, level);
 
         this.game.printBoard();
 
         while (true) {
-            // Player Turn
             this.playerPlay();
             System.out.println("_____Player Turn______");
             this.game.printBoard();
@@ -117,7 +118,6 @@ public class Game {
                 break;
             }
 
-            // Computer Turn
             this.computerPlay();
             System.out.println("_____Computer Turn______");
             this.game.printBoard();
