@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Board {
 
     char[][] board;
-    int level = 0;
+    int level;
 
     public Board(int row, int col, int level) {
 
@@ -95,49 +95,49 @@ public class Board {
 
                 Blob b = Game.computerBlobs.get(ii);
                 boolean ok = false;
-                if (b.i == i + 1 && b.j == j) {
+                if (checkBoundedBoard(i+1,j) && b.i == i + 1 && b.j == j) {
                     Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
                     board[i + 1][j] = 'b';
                     ok = true;
                 }
-                if (b.i == i - 1 && b.j == j) {
+                if (checkBoundedBoard(i-1,j) && b.i == i - 1 && b.j == j) {
                     Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
                     board[i - 1][j] = 'b';
                     ok = true;
                 }
-                if (b.i == i && b.j == j + 1) {
+                if (checkBoundedBoard(i,j+1) && b.i == i && b.j == j + 1) {
                     Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
                     board[i][j + 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i && b.j == j - 1) {
+                if (checkBoundedBoard(i,j-1) && b.i == i && b.j == j - 1) {
                     Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
-                    board[i][j + 1] = 'b';
+                    board[i][j - 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i + 1 && b.j == j + 1) {
+                if (checkBoundedBoard(i+1,j+1) &&b.i == i + 1 && b.j == j + 1) {
                     Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
                     board[i + 1][j + 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i - 1 && b.j == j - 1) {
+                if (checkBoundedBoard(i-1,j-1) && b.i == i - 1 && b.j == j - 1) {
                     Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
                     board[i - 1][j - 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i + 1 && b.j == j - 1) {
+                if (checkBoundedBoard(i+1,j-1) && b.i == i + 1 && b.j == j - 1) {
                     Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
                     board[i + 1][j - 1] = 'b';
                     ok = true;
                 }
-                if (b.i == i - 1 && b.j == j + 1) {
+                if (checkBoundedBoard(i-1,j+1) && b.i == i - 1 && b.j == j + 1) {
                     Game.playerBlobs.add(new Blob(b.i, b.j));
                     Game.computerBlobs.remove(b);
                     board[i - 1][j + 1] = 'b';
@@ -149,50 +149,50 @@ public class Board {
             for (int ii = 0; ii < Game.playerBlobs.size(); ) {
                 Blob b = Game.playerBlobs.get(ii);
                 boolean ok = false;
-                if (b.i == i + 1 && b.j == j) {
+                if (checkBoundedBoard(i+1,j) && b.i == i + 1 && b.j == j) {
                     Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
 
                     board[i + 1][j] = 'r';
                     ok = true;
                 }
-                if (b.i == i - 1 && b.j == j) {
+                if (checkBoundedBoard(i-1,j) && b.i == i - 1 && b.j == j) {
                     Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
                     board[i - 1][j] = 'r';
                     ok = true;
                 }
-                if (b.i == i && b.j == j + 1) {
+                if (checkBoundedBoard(i,j+1) && b.i == i && b.j == j + 1) {
                     Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
                     board[i][j + 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i && b.j == j - 1) {
+                if (checkBoundedBoard(i,j-1) && b.i == i && b.j == j - 1) {
                     Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
-                    board[i][j + 1] = 'r';
+                    board[i][j - 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i + 1 && b.j == j + 1) {
+                if (checkBoundedBoard(i+1,j+1) && b.i == i + 1 && b.j == j + 1) {
                     Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
                     board[i + 1][j + 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i - 1 && b.j == j - 1) {
+                if (checkBoundedBoard(i-1,j-1) && b.i == i - 1 && b.j == j - 1) {
                     Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
                     board[i - 1][j - 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i + 1 && b.j == j - 1) {
+                if (checkBoundedBoard(i+1,j-1) && b.i == i + 1 && b.j == j - 1) {
                     Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
                     board[i + 1][j - 1] = 'r';
                     ok = true;
                 }
-                if (b.i == i - 1 && b.j == j + 1) {
+                if (checkBoundedBoard(i-1,j+1) && b.i == i - 1 && b.j == j + 1) {
                     Game.computerBlobs.add(new Blob(b.i, b.j));
                     Game.playerBlobs.remove(b);
                     board[i - 1][j + 1] = 'r';
@@ -203,6 +203,7 @@ public class Board {
             }
 
         }
+
 
 
     }
@@ -225,9 +226,9 @@ public class Board {
         }
 
 
-        for (int i = 0; i < board.length; i++) {
+        for (char[] chars : board) {
             for (int j = 0; j < board.length; j++) {
-                if (board[i][j] == '_')
+                if (chars[j] == '_')
                     return false;
             }
         }
@@ -249,17 +250,13 @@ public class Board {
 
         //TODO: WRITE EVALUATE CODE
 
-        if (computerBlobs.size() == 0)
-            return -100;
-        if (playerBlobs.size() == 0)
-            return 100;
+
 
         if (computerBlobs.size() > playerBlobs.size())
-            utility+=computerBlobs.size()-playerBlobs.size();
-        if (computerBlobs.size() == playerBlobs.size())
-            utility++;
+            utility=computerBlobs.size()-playerBlobs.size();
+
         if (computerBlobs.size() < playerBlobs.size())
-            utility -= computerBlobs.size()-playerBlobs.size();
+            utility = playerBlobs.size()-computerBlobs.size();
 
 
         return utility;
@@ -344,7 +341,7 @@ public class Board {
                 else
                     distancej = playerBlob.j - blob.j;
 
-                if (distancei == 1 || distancej == 1) {
+                if (distancei <= 1 && distancej <= 1) {
                     toBeRemoved.add(playerBlob);
                     computerBlobs.add(playerBlob);
 
@@ -363,7 +360,7 @@ public class Board {
                 else
                     distancej = computerBlob.j - blob.j;
 
-                if (distancei == 1 || distancej == 1) {
+                if (distancei <= 1 && distancej <= 1) {
                     toBeRemoved.add(computerBlob);
                     playerBlobs.add(computerBlob);
 
@@ -948,6 +945,7 @@ public class Board {
         ArrayList<Blob> fakeComputerBlobs = new ArrayList<>();
         ArrayList<Blob> fakePlayerBlobs = new ArrayList<>();
         score = evaluate(computerBlobs, playerBlobs);
+
         if (finish(computerBlobs, playerBlobs))
             return score;
         if (depth == level)
@@ -960,8 +958,7 @@ public class Board {
             for (Blob computerblob :
                     computerBlobs) {
 
-                //fakeComputerBlobs.addAll(computerBlobs);
-               // fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -975,8 +972,7 @@ public class Board {
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -990,8 +986,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1003,8 +998,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1018,8 +1012,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveRight1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1031,8 +1024,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveRight2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1046,8 +1038,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveLeft1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1059,8 +1050,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveLeft2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1075,8 +1065,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUpRight1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1089,8 +1078,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUpRight2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1105,8 +1093,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUpLeft1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1119,8 +1106,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUpLeft2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1135,8 +1121,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDownRight1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1150,8 +1135,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDownRight2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1166,8 +1150,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDownLeft1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1179,8 +1162,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDownLeft2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1195,8 +1177,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp1Right2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1211,8 +1192,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp1Left2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1227,8 +1207,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp2Right1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1243,8 +1222,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp2Left1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1259,8 +1237,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown1Left2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1275,8 +1252,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown1Right2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1291,8 +1267,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown2Right1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1307,8 +1282,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown2Left1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1335,8 +1309,7 @@ public class Board {
             for (Blob computerblob :
                     playerBlobs) {
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1350,8 +1323,7 @@ public class Board {
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1363,8 +1335,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1376,8 +1347,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1391,8 +1361,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveRight1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1404,8 +1373,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveRight2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1419,8 +1387,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveLeft1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1432,8 +1399,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveLeft2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1447,8 +1413,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUpRight1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1461,8 +1426,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUpRight2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1477,8 +1441,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUpLeft1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1491,8 +1454,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUpLeft2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1501,15 +1463,13 @@ public class Board {
                         best = b;
 
 
-                    computerblob.i += 2;
-                    computerblob.j += 2;
+
                 }
                 fakeComputerBlobs.clear();
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDownRight1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1523,8 +1483,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDownRight2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1539,8 +1498,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDownLeft1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1552,8 +1510,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDownLeft2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1568,8 +1525,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp1Right2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1584,8 +1540,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp1Left2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1600,8 +1555,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp2Right1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1616,8 +1570,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveUp2Left1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1632,8 +1585,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown1Left2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1648,8 +1600,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown1Right2(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1664,8 +1615,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown2Right1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1680,8 +1630,7 @@ public class Board {
                 fakePlayerBlobs.clear();
 
 
-//                fakeComputerBlobs.addAll(computerBlobs);
-//                fakePlayerBlobs.addAll(playerBlobs);
+
                 addToList(fakeComputerBlobs,computerBlobs);
                 addToList(fakePlayerBlobs,playerBlobs);
                 if (moveDown2Left1(new Blob(computerblob.i,computerblob.j), false, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1728,8 +1677,7 @@ public class Board {
 
         for (Blob computerblob : computerBlobs) {
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUp1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1749,8 +1697,7 @@ public class Board {
             fakeComputerBlobs.clear();
             fakePlayerBlobs.clear();
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUp2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1770,8 +1717,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDown1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1793,8 +1739,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDown2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1817,8 +1762,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveRight1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1834,8 +1778,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveRight2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1853,8 +1796,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveLeft1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1870,11 +1812,11 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveLeft2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
+
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
 
 
@@ -1883,14 +1825,14 @@ public class Board {
                     movement = "LEFT2";
                     bestblob.i = computerblob.i;
                     bestblob.j = computerblob.j;
+                    System.out.println(best);
                 }
             }
             fakeComputerBlobs.clear();
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUpRight1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1906,8 +1848,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUp1Right2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1926,8 +1867,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUp2Right1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1945,8 +1885,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUpRight2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1965,8 +1904,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUpLeft1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -1982,8 +1920,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUp2Left1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2002,27 +1939,30 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
+
             if (moveUp1Left2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
+                //System.out.println("NOW ");
                 int b = minimax(0, false, fakeComputerBlobs, fakePlayerBlobs);
 
 
                 if (b > best) {
                     best = b;
+
                     movement = "UP1LEFT2";
                     bestblob.i = computerblob.i;
                     bestblob.j = computerblob.j;
+
                 }
             }
             fakeComputerBlobs.clear();
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveUpLeft2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2035,14 +1975,14 @@ public class Board {
                     movement = "UP2LEFT2";
                     bestblob.i = computerblob.i;
                     bestblob.j = computerblob.j;
+
                 }
             }
             fakeComputerBlobs.clear();
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDownRight1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2058,8 +1998,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDown1Right2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2078,8 +2017,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDown2Right1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2098,8 +2036,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDownRight2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2118,8 +2055,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDownLeft1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2135,8 +2071,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDown2Left1(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2155,8 +2090,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDown1Left2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2179,8 +2113,7 @@ public class Board {
             fakePlayerBlobs.clear();
 
 
-//            fakeComputerBlobs.addAll(computerBlobs);
-//            fakePlayerBlobs.addAll(playerBlobs);
+
             addToList(fakeComputerBlobs,computerBlobs);
             addToList(fakePlayerBlobs,playerBlobs);
             if (moveDownLeft2(new Blob(computerblob.i,computerblob.j), true, fakeComputerBlobs, fakePlayerBlobs)) {
@@ -2213,26 +2146,12 @@ public class Board {
      * with 24 move
      */
     void takeMove() {
-        for (Blob computerBlob:
-                Game.computerBlobs) {
-            System.out.println("C: "+computerBlob.i + " "+computerBlob.j);
-        }
-        for (Blob playerBlob:
-                Game.playerBlobs) {
-            System.out.println("P: "+playerBlob.i+" "+playerBlob.j);
-        }
+
         Move moveTo = this.bestMove(Game.computerBlobs,Game.playerBlobs);
         int i = moveTo.blob.i;
         int j = moveTo.blob.j;
 
-        for (Blob computerBlob:
-                Game.computerBlobs) {
-            System.out.println("AC: "+computerBlob.i + " "+computerBlob.j);
-        }
-        for (Blob playerBlob:
-                Game.playerBlobs) {
-            System.out.println("AP: "+playerBlob.i+" "+playerBlob.j);
-        }
+
         System.out.println(moveTo.movement);
         System.out.println(moveTo.blob.i + "\t" +moveTo.blob.j);
 
@@ -2268,9 +2187,9 @@ public class Board {
     }
 
     void printBoard() {
-        for (int i = 0; i < board.length; i++) {
+        for (char[] chars : board) {
             for (int j = 0; j < board.length; j++) {
-                System.out.print(board[i][j] + "\t");
+                System.out.print(chars[j] + "\t");
             }
             System.out.println();
         }
