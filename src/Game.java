@@ -59,7 +59,7 @@ public class Game {
                 break;
             }
         }
-
+        //s.close();
     }
 
     /**
@@ -68,10 +68,10 @@ public class Game {
      * @param two the second point
      * @return the ditsance between one and two
      */
-    private double getDistance(Cell one, Cell two) {
+    private int getDistance(Cell one, Cell two) {
         int ii = Math.abs(one.i - two.i);
         int jj = Math.abs(one.j - two.j);
-        return Math.sqrt((ii * ii) + (jj * jj));
+        return (int)Math.sqrt((ii * ii) + (jj * jj));
     }
 
     /**
@@ -82,6 +82,8 @@ public class Game {
      * @return 0 if invalid movement , 1 for one step and 2 for two steps
      */
     private int checkType(Cell one, Cell two) {
+
+        System.out.println("Dis : "+getDistance(one,two) );
         if (getDistance(one, two) > 2) return 0;
         else {
             if (getDistance(one, two) == 1) return 1;
@@ -97,8 +99,12 @@ public class Game {
     public void start() {
 
 
+        System.out.print("Enter the Game Level: ");
+        int level = s.nextInt();
 
-        this.game = new Board(8, 8);
+
+
+        this.game = new Board(8, 8, level);
 
         this.game.printBoard();
 
