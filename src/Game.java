@@ -59,7 +59,7 @@ public class Game {
                 break;
             }
         }
-        //s.close();
+
     }
 
     /**
@@ -68,10 +68,10 @@ public class Game {
      * @param two the second point
      * @return the ditsance between one and two
      */
-    private double getDistance(Cell one, Cell two) {
+    private int getDistance(Cell one, Cell two) {
         int ii = Math.abs(one.i - two.i);
         int jj = Math.abs(one.j - two.j);
-        return Math.sqrt((ii * ii) + (jj * jj));
+        return (int)Math.sqrt((ii * ii) + (jj * jj));
     }
 
     /**
@@ -89,7 +89,6 @@ public class Game {
         }
     }
 
-    // The Computer Function
     private void computerPlay() {
         this.game.takeMove();
     }
@@ -99,15 +98,17 @@ public class Game {
 
         System.out.print("Enter the Game Level: ");
         int level = s.nextInt();
+        System.out.print("\n"+"Enter board width: ");
+        int width = s.nextInt();
+        System.out.print("\n"+"Enter board height: ");
+        int height = s.nextInt();
 
 
-
-        this.game = new Board(8, 8, level);
+        this.game = new Board(width, height, level);
 
         this.game.printBoard();
 
         while (true) {
-            // Player Turn
             this.playerPlay();
             System.out.println("_____Player Turn______");
             this.game.printBoard();
@@ -115,7 +116,6 @@ public class Game {
                 break;
             }
 
-            // Computer Turn
             this.computerPlay();
             System.out.println("_____Computer Turn______");
             this.game.printBoard();
