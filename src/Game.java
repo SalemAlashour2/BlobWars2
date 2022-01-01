@@ -16,7 +16,7 @@ public class Game {
      *  this method take two {@link Cell}
      *  as Selected Cell and the Location Cell
      *  from player
-     *  then use move or insert method
+     *  then use move or insert methods
      */
     private void playerPlay() {
 
@@ -66,7 +66,7 @@ public class Game {
      *  get the distance between two point
      * @param one the first point
      * @param two the second point
-     * @return the ditsance between one and two
+     * @return the distance between one and two as int value {@link Integer}
      */
     private int getDistance(Cell one, Cell two) {
         int ii = Math.abs(one.i - two.i);
@@ -79,9 +79,11 @@ public class Game {
      * as one or two steps
      * @param one the current blob location
      * @param two the next blob location
-     * @return 0 if invalid movement , 1 for one step and 2 for two steps
+     * @return 0 if invalid movement , 1 for one step and 2 for two steps as int value {@link Integer}
      */
     private int checkType(Cell one, Cell two) {
+
+        System.out.println("Dis : "+getDistance(one,two) );
         if (getDistance(one, two) > 2) return 0;
         else {
             if (getDistance(one, two) == 1) return 1;
@@ -89,10 +91,21 @@ public class Game {
         }
     }
 
+    /**
+     *  this method represent the computer turn in Game
+     *  by using take move method in {@link Game} calss
+     */
     private void computerPlay() {
         this.game.takeMove();
     }
 
+    /**
+     * this method represent the start point
+     * of Blob game .
+     * it is initialize the Gams's board and level
+     * then take a movement from player and computer  alternately
+     * by using playerPlay and computerPlay methods
+     */
     public void start() {
 
 
@@ -126,6 +139,11 @@ public class Game {
 
     }
 
+
+    /**
+     *  start point of code
+     * @param args code commands as array of string
+     */
     public static void main(String[] args)
     {
         Game lets_play = new Game();
