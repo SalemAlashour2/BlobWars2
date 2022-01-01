@@ -89,7 +89,6 @@ public class Game {
         }
     }
 
-    // The Computer Function
     private void computerPlay() {
         this.game.takeMove();
     }
@@ -110,7 +109,6 @@ public class Game {
         this.game.printBoard();
 
         while (true) {
-            // Player Turn
             this.playerPlay();
             System.out.println("_____Player Turn______");
             this.game.printBoard();
@@ -118,7 +116,6 @@ public class Game {
                 break;
             }
 
-            // Computer Turn
             this.computerPlay();
             System.out.println("_____Computer Turn______");
             this.game.printBoard();

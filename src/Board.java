@@ -38,7 +38,6 @@ public class Board {
 
 
 
-    // Insert Value In Empty Place (Needed For Player)
     public void insert(char value, Cell pos) {
         if (checkBoundedBoard(pos.i, pos.j))
             if (this.board[pos.i][pos.j] == '_') {
