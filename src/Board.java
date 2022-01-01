@@ -5,6 +5,14 @@ public class Board {
     char[][] board;
     int level;
 
+    /**
+     *  constructor of Board
+     *  it initialize the board with empty cell
+     *  and initial position for blobs
+     * @param row number of rows
+     * @param col number of columns
+     * @param level the level of Game it's used in MiniMax algo
+     */
     public Board(int row, int col, int level) {
 
         this.board = new char[row][col];
@@ -29,6 +37,12 @@ public class Board {
     }
 
 
+    /**
+     *  this method is used to copy all the content of source list of Blob
+     *  to destination list of blob
+     * @param destination list of {@link Blob}
+     * @param source list of {@link Blob}
+     */
     public void addToList(ArrayList<Blob> destination,ArrayList<Blob> source)
     {
         for (Blob blob:
@@ -38,7 +52,12 @@ public class Board {
     }
 
 
-
+    /**
+     *  this method is used to move the blob on board by one step
+     *  by making an instance from selected blob
+     * @param value char of Blob represent as 'b' or 'r' on board
+     * @param pos the next  position of Blob on board as {@link Cell} value
+     */
     public void insert(char value, Cell pos) {
         if (checkBoundedBoard(pos.i, pos.j))
             if (this.board[pos.i][pos.j] == '_') {
@@ -46,10 +65,17 @@ public class Board {
                 if (value == 'b') Game.playerBlobs.add(new Blob(pos.i, pos.j)) ;
                 else Game.computerBlobs.add(new Blob(pos.i, pos.j)) ;
                 paintBlob(value,pos);
-
             }
     }
 
+    /**
+     * this method is used to move the blob on board by two steps
+     * without making an instance from selected blob
+     * @param value char of Blob represent as 'b' or 'r' on board
+     * @param pos the next  position of Blob on board as {@link Cell} value
+     * @param p_pos the previous  position of Blob on board as {@link Cell} value
+     *              used to return Cell to empty cell
+     */
     public void move(char value, Cell pos, Cell p_pos) {
         if (checkBoundedBoard(pos.i, pos.j))
             if (board[pos.i][pos.j] == '_') {
@@ -322,7 +348,6 @@ public class Board {
      * @param computerBlobs is the computer's blob list.
      * @param playerBlobs   is the player's blob list.
      */
-
     void changeBlob(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         int distancei;
         int distancej;
@@ -380,7 +405,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUp1(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
 
         Blob movedBlob;
@@ -411,7 +435,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUp2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
 
         if (canMove(blob, blob.i - 2, blob.j, computerBlobs, playerBlobs)) {
@@ -508,7 +531,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveRight2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i, blob.j + 2, computerBlobs, playerBlobs)) {
             blob.j = blob.j + 2;
@@ -528,7 +550,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUp1Right2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i - 1, blob.j + 2, computerBlobs, playerBlobs)) {
             blob.i = blob.i - 1;
@@ -595,7 +616,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveLeft2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i, blob.j - 2, computerBlobs, playerBlobs)) {
             blob.j = blob.j - 2;
@@ -614,7 +634,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUp1Left2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i - 1, blob.j - 2, computerBlobs, playerBlobs)) {
             blob.i = blob.i - 1;
@@ -634,7 +653,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveDown1Left2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i + 1, blob.j - 2, computerBlobs, playerBlobs)) {
             blob.i = blob.i + 1;
@@ -656,7 +674,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUpRight1(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         Blob movedBlob;
         if (canMove(blob, blob.i - 1, blob.j + 1, computerBlobs, playerBlobs)) {
@@ -685,7 +702,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUp2Right1(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i - 2, blob.j + 1, computerBlobs, playerBlobs)) {
             blob.i = blob.i - 2;
@@ -705,7 +721,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUpRight2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i - 2, blob.j + 2, computerBlobs, playerBlobs)) {
             blob.i = blob.i - 2;
@@ -727,7 +742,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUpLeft1(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         Blob movedBlob;
         if (canMove(blob, blob.i - 1, blob.j - 1, computerBlobs, playerBlobs)) {
@@ -746,7 +760,6 @@ public class Board {
             return false;
     }
 
-
     /**
      * This function is used to move the blob upwards by two steps and to the left by one step.
      *
@@ -756,7 +769,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUp2Left1(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i - 2, blob.j - 1, computerBlobs, playerBlobs)) {
             blob.i = blob.i - 2;
@@ -776,7 +788,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveUpLeft2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i - 2, blob.j - 2, computerBlobs, playerBlobs)) {
             blob.i = blob.i - 2;
@@ -797,7 +808,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveDownRight1(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         Blob movedBlob;
         if (canMove(blob, blob.i + 1, blob.j + 1, computerBlobs, playerBlobs)) {
@@ -826,7 +836,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveDownRight2(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i + 2, blob.j + 2, computerBlobs, playerBlobs)) {
             blob.i = blob.i + 2;
@@ -848,7 +857,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveDownLeft1(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         Blob movedBlob;
         if (canMove(blob, blob.i + 1, blob.j - 1, computerBlobs, playerBlobs)) {
@@ -915,7 +923,6 @@ public class Board {
      * @param playerBlobs   is the player's blob list.
      * @return Function returns true if the movement was successful and false otherwise.
      */
-
     boolean moveDown2Left1(Blob blob, boolean isMax, ArrayList<Blob> computerBlobs, ArrayList<Blob> playerBlobs) {
         if (canMove(blob, blob.i + 2, blob.j - 1, computerBlobs, playerBlobs)) {
             blob.i = blob.i + 2;
@@ -2185,6 +2192,11 @@ public class Board {
 
     }
 
+
+    /**
+     * this method is used to print Game's board
+     * to show the content of the board
+     */
     void printBoard() {
         for (char[] chars : board) {
             for (int j = 0; j < board[0].length; j++) {
