@@ -15,14 +15,14 @@ public class Board {
         }
 
         Game.playerBlobs.add(new Blob(0, 0));
-        Game.playerBlobs.add(new Blob(7, 0));
-        Game.computerBlobs.add(new Blob(0, 7));
-        Game.computerBlobs.add(new Blob(7, 7));
+        Game.playerBlobs.add(new Blob(row-1, 0));
+        Game.computerBlobs.add(new Blob(0, col-1));
+        Game.computerBlobs.add(new Blob(row-1, col-1));
 
         board[0][0] = 'b';
-        board[7][0] = 'b';
-        board[0][7] = 'r';
-        board[7][7] = 'r';
+        board[row-1][0] = 'b';
+        board[0][col-1] = 'r';
+        board[row-1][col-1] = 'r';
 
         this.level = level;
     }
@@ -2188,7 +2188,7 @@ public class Board {
 
     void printBoard() {
         for (char[] chars : board) {
-            for (int j = 0; j < board.length; j++) {
+            for (int j = 0; j < board[0].length; j++) {
                 System.out.print(chars[j] + "\t");
             }
             System.out.println();

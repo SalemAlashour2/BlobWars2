@@ -59,7 +59,7 @@ public class Game {
                 break;
             }
         }
-        //s.close();
+
     }
 
     /**
@@ -99,10 +99,13 @@ public class Game {
 
         System.out.print("Enter the Game Level: ");
         int level = s.nextInt();
+        System.out.print("\n"+"Enter board width: ");
+        int width = s.nextInt();
+        System.out.print("\n"+"Enter board height: ");
+        int height = s.nextInt();
 
 
-
-        this.game = new Board(8, 8, level);
+        this.game = new Board(width, height, level);
 
         this.game.printBoard();
 
